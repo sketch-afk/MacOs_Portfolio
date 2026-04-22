@@ -58,6 +58,6 @@ A high-performance, interactive portfolio website inspired by the macOS desktop 
 1. **Clone & Install:**
    ```bash
    git clone https://github.com/sketch-afk/MacOs_Portfolio.git
-   cd macos_portfolio
+   cd MacOs_Portfolio
    npm install
    ```
