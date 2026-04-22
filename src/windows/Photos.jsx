@@ -12,7 +12,7 @@ const Photos = () => {
   return (
     <>
       <div id="window-header">
-        <WindowControls target="resume" />
+        <WindowControls target="photos" />
 
 
         <div className="w-full flex justify-end items-center gap-3 text-gray-500">
