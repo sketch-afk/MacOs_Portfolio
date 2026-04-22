@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Welcome, Dock, Home } from "#components";
 import { Terminal, Safari, Resume, Finder, Text, Image, Contact, Photos } from "#windows";
 
-import { Draggable } from "gsap/draggable";
+import { Draggable } from "gsap/Draggable";
 import { gsap } from "gsap";
 gsap.registerPlugin(Draggable);
 
