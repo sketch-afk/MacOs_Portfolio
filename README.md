@@ -23,7 +23,7 @@ A high-performance, interactive portfolio website inspired by the macOS desktop 
 
 ## 📸 Gallery
 
-![Desktop](./public/imggg.png)
+![Desktop](./public/imggg.png) 
 
 <!-- | Desktop View | Window Management |
 |---|---|
