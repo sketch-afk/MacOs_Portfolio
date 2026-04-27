@@ -11,7 +11,7 @@ const BootScreen = ({ onBootComplete }) => {
     const tl = gsap.timeline({
       onComplete: () => {
         setIsVisible(false);
-        if (onBootComplete) onBootComplete(); 
+        if (onBootComplete) onBootComplete();
       },
     });
 
@@ -19,24 +19,24 @@ const BootScreen = ({ onBootComplete }) => {
       width: "100%",
       duration: 1.5,
       ease: "power1.inOut",
-    })
-    .to(containerRef.current, {
-      opacity: 0,
-      duration: 0.6,
-      ease: "power2.out",
-    }, "+=0.3"); 
-
+    }).to(
+      containerRef.current,
+      {
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.out",
+      },
+      "+=0.3",
+    );
   }, []);
-
 
   if (!isVisible) return null;
 
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-black"
+      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black"
     >
-
       <svg
         className="w-24 h-24 text-white mb-16"
         fill="currentColor"
