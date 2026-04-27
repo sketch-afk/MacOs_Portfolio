@@ -2,11 +2,13 @@ import { useLayoutEffect, useRef } from "react";
 import useWindowStore from "#store/window.js";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { Draggable } from "gsap/Draggable";
 
-const WindowWrapper = (Component, windowKey) => {
+// Removed the Draggable import entirely!
+
+const WindowWrapLaunch = (Component, windowKey) => {
   const Wrapped = (props) => {
-    const { focusWindow, windows } = useWindowStore();
+    // Removed focusWindow from destructuring since Draggable is gone
+    const { windows } = useWindowStore(); 
     const { isOpen, zIndex, isMaximized } = windows[windowKey];
     const ref = useRef(null);
 
@@ -16,33 +18,23 @@ const WindowWrapper = (Component, windowKey) => {
 
       el.style.display = "block";
 
+      // macOS Launchpad Animation: Slight scale down from 1.05 and fade in
       gsap.fromTo(
         el,
         {
-          scale: 0.8,
+          scale: 1.05, 
           opacity: 0,
-          y: 40,
         },
         {
-          scale: 1,
+          scale: 1, 
           opacity: 1,
-          y: 0,
-          duration: 0.2,
+          duration: 0.3, // Slightly longer duration for a buttery smooth fade
           ease: "power3.out",
-        },
+        }
       );
     }, [isOpen]);
 
-    useGSAP(() => {
-      const el = ref.current;
-      if (!el) return;
-
-      const [instance] = Draggable.create(el, {
-        onPress: () => focusWindow(windowKey),
-      });
-
-      return () => instance.kill();
-    }, []);
+    // The entire useGSAP Draggable block was deleted here
 
     useLayoutEffect(() => {
       const el = ref.current;
@@ -67,7 +59,7 @@ const WindowWrapper = (Component, windowKey) => {
               }
             : {}),
         }}
-        className="absolute"
+        className="absolute inset-0" // Added inset-0 to help ensure it covers the screen
       >
         <Component {...props} />
       </section>
@@ -79,4 +71,4 @@ const WindowWrapper = (Component, windowKey) => {
   return Wrapped;
 };
 
-export default WindowWrapper;
+export default WindowWrapLaunch;
