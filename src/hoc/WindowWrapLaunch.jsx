@@ -3,11 +3,10 @@ import useWindowStore from "#store/window.js";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
-// Removed the Draggable import entirely!
 
 const WindowWrapLaunch = (Component, windowKey) => {
   const Wrapped = (props) => {
-    // Removed focusWindow from destructuring since Draggable is gone
+
     const { windows } = useWindowStore(); 
     const { isOpen, zIndex, isMaximized } = windows[windowKey];
     const ref = useRef(null);
@@ -18,7 +17,7 @@ const WindowWrapLaunch = (Component, windowKey) => {
 
       el.style.display = "block";
 
-      // macOS Launchpad Animation: Slight scale down from 1.05 and fade in
+
       gsap.fromTo(
         el,
         {
@@ -28,13 +27,12 @@ const WindowWrapLaunch = (Component, windowKey) => {
         {
           scale: 1, 
           opacity: 1,
-          duration: 0.3, // Slightly longer duration for a buttery smooth fade
+          duration: 0.3, 
           ease: "power3.out",
         }
       );
     }, [isOpen]);
 
-    // The entire useGSAP Draggable block was deleted here
 
     useLayoutEffect(() => {
       const el = ref.current;
@@ -59,7 +57,7 @@ const WindowWrapLaunch = (Component, windowKey) => {
               }
             : {}),
         }}
-        className="absolute inset-0" // Added inset-0 to help ensure it covers the screen
+        className="absolute inset-0" 
       >
         <Component {...props} />
       </section>

@@ -7,6 +7,7 @@ import Image from "#windows/Image.jsx";
 import Contact from "#windows/Contact.jsx";
 import Photos from "#windows/Photos.jsx";
 import Launchpad from "#windows/Launchpad.jsx";
+import Control from "#windows/Control.jsx";
 
 export {
   Terminal,
@@ -18,4 +19,5 @@ export {
   Contact,
   Photos,
   Launchpad,
+  Control
 };

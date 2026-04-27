@@ -20,18 +20,22 @@ const navIcons = [
   {
     id: 1,
     img: "/icons/wifi.svg",
+    type: "wifi"
   },
   {
     id: 2,
     img: "/icons/search.svg",
+    type: "launchpad"
   },
   {
     id: 3,
     img: "/icons/user.svg",
+    type: "resume"
   },
   {
     id: 4,
     img: "/icons/mode.svg",
+    type: "control"
   },
 ];
 
@@ -583,6 +587,13 @@ const WINDOW_CONFIG = {
     data: null,
   },
   imgfile: {
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    zIndex: INITIAL_Z_INDEX,
+    data: null,
+  },
+  control: {
     isOpen: false,
     isMinimized: false,
     isMaximized: false,
