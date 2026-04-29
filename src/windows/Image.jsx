@@ -18,7 +18,7 @@ const Image = () => {
         <h2>{name}</h2>
       </div>
 
-      <div className="p-5 bg-white flex items-center justify-center">
+      <div className="p-5 bg-white dark:bg-[#1e1e1e] flex items-center justify-center">
         {imageUrl ? (
           <div className="max-w-full max-h-96">
             <img

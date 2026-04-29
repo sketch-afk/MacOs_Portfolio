@@ -38,9 +38,9 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav id="control-toggle">
+    <nav>
       <div>
-        <img src="/images/logo.svg" alt="" />
+        <img className="dark:invert" src="/images/logo.svg" alt="" />
         <p className="font-bold max-sm:hidden">Yash's Portfolio</p>
 
         <ul className="max-sm:hidden">
@@ -70,6 +70,7 @@ const Navbar = () => {
           </div>
           {navIcons.map(({ id, img, type }) => (
             <li
+
               key={id}
               onClick={() => {
                 if (isOpen) {
@@ -83,7 +84,7 @@ const Navbar = () => {
             >
               <img
                 src={img}
-                className="icon-hover cursor-pointer"
+                className="icon-hover"
                 alt={`icon-${id}`}
               />
             </li>

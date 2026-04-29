@@ -2,6 +2,8 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 html,
 body {
   width: 100dvw;
@@ -11,6 +13,11 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  transition: background-image 0.3s ease-in-out;
+}
+
+.dark body {
+  background-image: url("/images/darkwallpaper.jpg"); /* Your dark wallpaper */
 }
 
 @theme {
@@ -37,7 +44,7 @@ body {
   }
 
   nav {
-    @apply flex justify-between items-center bg-white/50 backdrop-blur-3xl p-2 px-5 select-none max-sm:px-3;
+    @apply flex justify-between items-center bg-white/50 dark:bg-[#333333]/50 backdrop-blur-3xl p-2 px-5 select-none max-sm:px-3;
 
     div {
       @apply flex items-center max-sm:w-full gap-5;
@@ -51,7 +58,7 @@ body {
       @apply flex items-center gap-5 ;
      
       img{
-    @apply max-sm:w-5 max-sm:h-5;
+    @apply max-sm:w-5 max-sm:h-5 cursor-pointer dark:invert;
   }
       p {
         @apply text-sm cursor-pointer hover:underline transition-all;
@@ -59,7 +66,7 @@ body {
     }
 
     time {
-      @apply text-sm font-medium text-black max-sm:text-[10px];
+      @apply dark:text-white text-sm font-medium text-black max-sm:text-[10px];
     }
   }
 }
@@ -110,23 +117,23 @@ body {
     }
 
     .minimize {
-      @apply size-3.5 rounded-full bg-[#ffc030];
+      @apply size-3.5 rounded-full bg-[#ffc030] cursor-pointer;
     }
 
     .maximize {
-      @apply size-3.5 rounded-full bg-[#2acb42];
+      @apply size-3.5 rounded-full bg-[#2acb42] cursor-pointer;
     }
   }
 
   #window-header {
-    @apply flex items-center justify-between px-4 py-3 rounded-t-lg bg-gray-50 border-b border-gray-200 select-none text-sm text-gray-400;
+    @apply flex items-center justify-between px-4 py-2 rounded-t-lg bg-gray-200 dark:bg-[#333333] border-b border-gray-200  dark:border-none select-none text-sm text-gray-400 dark:text-white;
   }
 
   #safari {
-    @apply w-4xl absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-4xl absolute top-40 left-2/12 bg-white dark:bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     .search {
-      @apply flex items-center gap-3 w-2/3 bg-white border border-gray-300 rounded-lg px-3 py-2;
+      @apply flex items-center gap-3 w-2/3 bg-white dark:bg-[#1e1e1e] border border-gray-300 dark:border-[#1e1e1e] rounded-lg px-3 py-2;
 
       input {
         @apply placeholder:text-gray-400;
@@ -134,7 +141,7 @@ body {
     }
 
     .blog {
-      @apply bg-white p-10 max-w-3xl mx-auto;
+      @apply bg-white dark:bg-[#1e1e1e] p-10 max-w-3xl mx-auto;
 
       h2 {
         @apply text-xl font-bold text-pink-600 mb-10;
@@ -151,11 +158,11 @@ body {
           @apply col-span-10 space-y-3;
 
           p {
-            @apply text-xs text-gray-500;
+            @apply text-xs text-gray-500 dark:text-white;
           }
 
           h3 {
-            @apply font-semibold text-base text-gray-800;
+            @apply font-semibold text-base text-gray-800 dark:text-white;
           }
 
           a {
@@ -167,7 +174,7 @@ body {
   }
 
   #terminal {
-    @apply w-xl absolute top-32 left-1/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-xl absolute top-32 left-1/12 bg-white dark:bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     h2 {
       @apply font-bold text-sm text-center w-full;
@@ -185,11 +192,11 @@ body {
 
         li {
           .check {
-            @apply text-[#00A154] w-5;
+            @apply text-[#00A154] dark:text-[#04b961] w-5;
           }
 
           h3 {
-            @apply font-semibold text-[#00A154] w-32 ms-5;
+            @apply font-semibold text-[#00A154] dark:text-[#04b961] w-32 ms-5;
           }
 
           ul {
@@ -199,10 +206,10 @@ body {
       }
 
       .footnote {
-        @apply text-[#00A154] space-y-1;
+        @apply text-[#00A154] dark:text-[#04b961] space-y-1;
 
         p {
-          @apply flex items-center;
+          @apply flex items-center  ;
 
           svg {
             @apply w-5 me-5;
@@ -212,8 +219,41 @@ body {
     }
   }
 
+  #vscode {
+    @apply w-3xl h-[70%] absolute top-20 left-1/4 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl ;
+
+    h2 {
+      @apply font-bold text-sm text-center w-full text-white;
+    }
+
+    .editor {
+      @apply flex h-[500px];
+
+      .sidebar {
+        @apply w-48 bg-[#252526] border-r border-[#333333] p-4;
+        
+        h3 {
+          @apply text-xs font-bold text-gray-500 uppercase tracking-wider mb-4;
+        }
+
+        ul li {
+          @apply flex items-center gap-2 text-sm text-gray-400 py-1 cursor-pointer hover:text-white;
+          
+          &.active {
+            @apply text-white bg-[#37373d] -mx-4 px-4;
+          }
+        }
+      }
+
+      .code-area {
+        @apply flex-1 bg-[#1e1e1e] p-6 font-roboto text-sm overflow-auto;
+      }
+    }
+
+  }
+
   #contact {
-    @apply max-w-2xl absolute top-60 left-5/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply max-w-2xl absolute top-60 left-5/12 bg-white dark:bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     h2 {
       @apply font-bold text-sm text-center w-full;
@@ -241,10 +281,10 @@ body {
   }
 
   #photos {
-    @apply max-w-3xl absolute top-96 left-1/2 -translate-y-1/2 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply max-w-3xl absolute top-96 left-1/2 -translate-y-1/2 bg-white dark:bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     .sidebar {
-      @apply w-3/12 flex-none bg-gray-50 border-r border-gray-200 flex flex-col p-5;
+      @apply w-3/12 flex-none bg-gray-50 dark:bg-[#333333] border-r border-gray-200 dark:border-black flex flex-col p-5;
 
       h2 {
         @apply text-xs font-medium text-gray-400 mb-1;
@@ -255,7 +295,7 @@ body {
           @apply flex space-y-1 items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors;
 
           &:first-child {
-            @apply bg-blue-100 text-blue-700;
+            @apply bg-blue-100 text-blue-700 dark:bg-[#474747] dark:text-white;
           }
 
           img {
@@ -311,10 +351,10 @@ body {
   }
 
   #finder {
-    @apply absolute w-3xl left-40 top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl;
+    @apply absolute w-3xl left-40 top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl ;
 
     .sidebar {
-      @apply w-48 bg-gray-50 border-r border-gray-200 flex flex-col p-5 space-y-3;
+      @apply w-48 bg-gray-50 dark:bg-[#333333] border-r border-gray-200 dark:border-black flex flex-col p-5 space-y-3;
 
       h3 {
         @apply text-xs font-medium text-gray-400 mb-1;
@@ -324,11 +364,11 @@ body {
         @apply space-y-1;
 
         .active {
-          @apply bg-blue-100 text-blue-700;
+          @apply bg-blue-100 dark:bg-[#474747] dark:text-white text-blue-700;
         }
 
         .not-active {
-          @apply text-gray-700 hover:bg-gray-200;
+          @apply text-gray-700 dark:text-white/70 dark:hover:bg-[#474747] hover:bg-gray-200;
         }
 
         li {
@@ -338,7 +378,7 @@ body {
     }
 
     .content {
-      @apply flex-1 p-8 bg-white max-w-2xl relative;
+      @apply flex-1 p-8 bg-white dark:bg-[#1e1e1e] max-w-2xl relative;
 
       li {
         @apply absolute flex items-center flex-col gap-3;
@@ -363,7 +403,7 @@ body {
   }
 
   #imgfile {
-    @apply w-xl absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-xl absolute top-40 left-2/12 bg-white dark:bg-gray-900 shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     #window-header {
       p {
@@ -372,7 +412,7 @@ body {
     }
 
     .preview {
-      @apply p-2 bg-gray-200 max-h-[70vh];
+      @apply p-2 bg-gray-200  max-h-[70vh];
 
       img {
         @apply w-full h-fit object-contain object-center;

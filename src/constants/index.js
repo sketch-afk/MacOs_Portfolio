@@ -77,6 +77,12 @@ const dockApps = [
     canOpen: true,
   },
   {
+    id: "vscode",
+    name: "VS Code", // was "Trash"
+    icon: "vscode.png",
+    canOpen: true,
+  },
+  {
     id: "trash",
     name: "Archive", // was "Trash"
     icon: "trash.png",
@@ -109,41 +115,11 @@ const blogPosts = [
   },
 ];
 
-// const techStack = [
-//   {
-//     category: "Frontend",
-//     items: ["React.js", "Next.js", "TypeScript"],
-//   },
-//   {
-//     category: "Mobile",
-//     items: ["React Native", "Expo"],
-//   },
-//   {
-//     category: "Styling",
-//     items: ["Tailwind CSS", "Sass", "CSS"],
-//   },
-//   {
-//     category: "Backend",
-//     items: ["Node.js", "Express", "NestJS", "Hono"],
-//   },
-//   {
-//     category: "Database",
-//     items: ["MongoDB", "PostgreSQL"],
-//   },
-//   {
-//     category: "Dev Tools",
-//     items: ["Git", "GitHub", "Docker"],
-//   },
-// ];
 const techStack = [
   {
     category: "Frontend",
     items: ["React.js", "Next.js", "JavaScript"],
   },
-  // {
-  //   category: "Mobile",
-  //   items: ["React Native", "Expo"],
-  // },
   {
     category: "Styling",
     items: ["Tailwind CSS", "CSS"],
@@ -168,28 +144,28 @@ const socials = [
     text: "Github",
     icon: "/icons/github.svg",
     bg: "#f4656b",
-    link: "https://github.com/JavaScript-Mastery-Pro",
+    link: "https://github.com/sketch-afk",
   },
   {
     id: 2,
     text: "Platform",
     icon: "/icons/atom.svg",
     bg: "#4bcb63",
-    link: "https://jsmastery.com/",
+    link: "https://github.com/sketch-afk",
   },
   {
     id: 3,
     text: "Twitter/X",
     icon: "/icons/twitter.svg",
     bg: "#ff866b",
-    link: "https://x.com/jsmasterypro",
+    link: "https://github.com/sketch-afk",
   },
   {
     id: 4,
     text: "LinkedIn",
     icon: "/icons/linkedin.svg",
     bg: "#05b6f6",
-    link: "https://www.linkedin.com/company/javascriptmastery/posts/?feedView=all",
+    link: "https://www.linkedin.com/in/yash-raj-gupta-a17875382/",
   },
 ];
 
@@ -594,6 +570,13 @@ const WINDOW_CONFIG = {
     data: null,
   },
   control: {
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    zIndex: INITIAL_Z_INDEX,
+    data: null,
+  },
+  vscode: {
     isOpen: false,
     isMinimized: false,
     isMaximized: false,

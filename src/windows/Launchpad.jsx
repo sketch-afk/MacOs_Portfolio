@@ -14,6 +14,7 @@ const launchpadApps = [
   { id: "finder", title: "Finder", icon: "/images/finder.png", canOpen: true, component: "Finder"},
   { id: "contact", title: "Contact", icon: "/images/contact.png", canOpen: true, component: "Contact"},
   { id: "photos", title: "Photos", icon: "/images/photos.png", canOpen: true, component: "Photos" },
+  { id: "vscode", title: "VS Code", icon: "/images/vscode.png", canOpen: true, component: "Vscode" },
 ];
 
 const Launchpad = () => {
