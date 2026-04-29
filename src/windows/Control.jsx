@@ -2,10 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import WindowWrapControl from "#hoc/WindowWrapControl";
 import useWindowStore from "#store/window.js";
 import { Wifi, Bluetooth, Moon, Sun, Volume2, VolumeX, Maximize } from "lucide-react";
+import { useTheme } from "next-themes";
 
-const Control = ({ isDarkMode, onToggleDarkMode }) => {
+const Control = () => {
   const { windows, closeWindow } = useWindowStore();
   const isOpen = windows["control"]?.isOpen;
+
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const isDark = theme === "dark";
   
   const [wifiEnabled, setWifiEnabled] = useState(true);
   const [bluetoothEnabled, setBluetoothEnabled] = useState(true);
@@ -14,6 +19,9 @@ const Control = ({ isDarkMode, onToggleDarkMode }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   const controlRef = useRef(null);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -83,59 +91,65 @@ const Control = ({ isDarkMode, onToggleDarkMode }) => {
     }
   };
 
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  if (!mounted) return null;
+
   return (
     <div ref={controlRef}
-      className="w-80 bg-gray-800/80 backdrop-blur-xl rounded-xl overflow-hidden shadow-2xl border border-white/10"
+      className="w-80 bg-white/70 dark:bg-gray-800/80 backdrop-blur-xl rounded-xl overflow-hidden shadow-2xl border border-gray-200 dark:border-white/10"
     >
       <div className="p-4">
         {/* Toggle Buttons Grid */}
         <div className="grid grid-cols-4 gap-3 mb-4">
           <button
             className={`flex flex-col items-center justify-center p-3 rounded-xl transition-colors ${
-              wifiEnabled ? "bg-blue-500" : "bg-gray-700 hover:bg-gray-600"
+              wifiEnabled ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white"
             }`}
             onClick={toggleWifi}
           >
-            <Wifi className="w-6 h-6 text-white mb-1" />
-            <span className="text-white text-[9px] uppercase font-medium">Wi-Fi</span>
+            <Wifi className="w-6 h-6 mb-1" />
+            <span className="text-[9px] uppercase font-medium">Wi-Fi</span>
           </button>
 
           <button
             className={`flex flex-col items-center justify-center p-3 rounded-xl transition-colors ${
-              bluetoothEnabled ? "bg-blue-500" : "bg-gray-700 hover:bg-gray-600"
+              bluetoothEnabled ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white"
             }`}
             onClick={() => setBluetoothEnabled(!bluetoothEnabled)}
           >
-            <Bluetooth className="w-6 h-6 text-white mb-1" />
-            <span className="text-white text-[9px] uppercase font-medium">Bluetooth</span>
+            <Bluetooth className="w-6 h-6 mb-1" />
+            <span className="text-[9px] uppercase font-medium">Bluetooth</span>
           </button>
 
           <button
             className={`flex flex-col items-center justify-center p-3 rounded-xl transition-colors ${
-              isDarkMode ? "bg-gray-700 hover:bg-gray-600" : "bg-blue-500"
+              isDark ? "bg-blue-500 text-white" : "bg-gray-200 hover:bg-gray-300 text-gray-800"
             }`}
-            onClick={onToggleDarkMode}
+            onClick={toggleTheme}
           >
-            {isDarkMode ? <Moon className="w-6 h-6 text-white mb-1" /> : <Sun className="w-6 h-6 text-white mb-1" />}
-            <span className="text-white text-[9px] uppercase font-medium">{isDarkMode ? "Dark" : "Light"}</span>
+            {isDark ? <Moon className="w-6 h-6 mb-1" /> : <Sun className="w-6 h-6 mb-1" />}
+            <span className="text-[9px] uppercase font-medium">{isDark ? "Dark" : "Light"}</span>
           </button>
 
           <button
             className={`flex flex-col items-center justify-center p-3 rounded-xl transition-colors ${
-              isFullscreen ? "bg-blue-500" : "bg-gray-700 hover:bg-gray-600"
+              isFullscreen ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white"
             }`}
             onClick={toggleFullscreen}
           >
-            <Maximize className="w-6 h-6 text-white mb-1" />
-            <span className="text-white text-[9px] uppercase font-medium">{isFullscreen ? "Exit" : "Fullscreen"}</span>
+            <Maximize className="w-6 h-6 mb-1" />
+            <span className="text-[9px] uppercase font-medium">{isFullscreen ? "Exit" : "Fullscreen"}</span>
           </button>
         </div>
 
         {/* Brightness Slider */}
-        <div className="bg-gray-700 rounded-xl p-3 mb-3">
+        <div className="bg-gray-100 dark:bg-gray-700 rounded-xl p-3 mb-3">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-white text-xs font-medium">Display</span>
-            <span className="text-white/70 text-xs">{brightness}%</span>
+            <span className="text-gray-800 dark:text-white text-xs font-medium">Display</span>
+            <span className="text-gray-500 dark:text-white/70 text-xs">{brightness}%</span>
           </div>
           <input
             type="range"
@@ -143,21 +157,21 @@ const Control = ({ isDarkMode, onToggleDarkMode }) => {
             max="100"
             value={brightness}
             onChange={(e) => setBrightness(Number.parseInt(e.target.value))}
-            className="w-full h-1.5 bg-gray-600 rounded-full appearance-none cursor-pointer accent-blue-500"
+            className="w-full h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full appearance-none cursor-pointer accent-blue-500"
           />
         </div>
 
         {/* Volume Slider */}
-        <div className="bg-gray-700 rounded-xl p-3">
+        <div className="bg-gray-100 dark:bg-gray-700 rounded-xl p-3">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-white text-xs font-medium">Volume</span>
-            <span className="text-white/70 text-xs">{volume}%</span>
+            <span className="text-gray-800 dark:text-white text-xs font-medium">Volume</span>
+            <span className="text-gray-500 dark:text-white/70 text-xs">{volume}%</span>
           </div>
           <div className="flex items-center">
             {volume === 0 ? (
-              <VolumeX className="w-4 h-4 text-white/70 mr-2" />
+              <VolumeX className="w-4 h-4 text-gray-500 dark:text-white/70 mr-2" />
             ) : (
-              <Volume2 className="w-4 h-4 text-white/70 mr-2" />
+              <Volume2 className="w-4 h-4 text-gray-500 dark:text-white/70 mr-2" />
             )}
             <input
               type="range"
@@ -165,7 +179,7 @@ const Control = ({ isDarkMode, onToggleDarkMode }) => {
               max="100"
               value={volume}
               onChange={(e) => setVolume(Number.parseInt(e.target.value))}
-              className="flex-1 h-1.5 bg-gray-600 rounded-full appearance-none cursor-pointer accent-blue-500"
+              className="flex-1 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full appearance-none cursor-pointer accent-blue-500"
             />
           </div>
         </div>
