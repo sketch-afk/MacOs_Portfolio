@@ -1,63 +1,86 @@
-<!-- # React + Vite
+# 💻 macOS Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project. -->
-
-# 💻 macOS Portfolio (React + Vite)
-
-A high-performance, interactive portfolio website inspired by the macOS desktop environment. Built with **React**, **Vite** for lightning-fast bundling, **GSAP** for fluid animations, and **Tailwind CSS**.
+An interactive macOS-inspired portfolio web app built with **React**, **Vite**, **Tailwind CSS**, and **GSAP**. The project recreates a desktop-like experience with draggable windows, a Dock, Launchpad, and multiple app panels for showcasing content.
 
 ---
-
 ## 📸 Gallery
 
 ![Desktop](./public/imggg.png) 
 
-<!-- | Desktop View | Window Management |
-|---|---|
-| ![Desktop](./src/assets/screenshots/desktop.png) | ![Windows](./src/assets/screenshots/windows.png) | -->
+---
 
-<!-- | Mobile Responsive | Interactive Dock |
-|---|---|
-| ![Mobile](./src/assets/screenshots/mobile.png) | ![Dock](./src/assets/screenshots/dock.png) | -->
+
+## ✨ Key Features
+
+- **macOS-style desktop UI** with floating windows and Window Controls
+- **Interactive Dock** Fully responsive dock with GSAP-powered magnification and bounce effects.
+- **Boot screen animation** Before showing the desktop
+- **Draggable windows** Using GSAP and custom window management
+- **Glassmorphism:** Premium Apple-inspired visuals using Tailwind's backdrop-blur filters.
+- **App windows** for Terminal, Safari, Finder, Text, Image viewer, VS Code-style display, Launchpad, and more
+- **Real-time UI:** Dynamic Top Menu Bar with live clock and system status.
 
 ---
 
-## 🌟 Key Features
 
-- **Interactive Dock:** Fully responsive dock with GSAP-powered magnification and bounce effects.
-- **Window System:** Draggable and functional windows for viewing projects and "About Me" sections.
-- **Vite Powered:** Instant Hot Module Replacement (HMR) for a smooth development experience.
-- **Glassmorphism:** Premium Apple-inspired visuals using Tailwind's backdrop-blur filters.
-- **Real-time UI:** Dynamic Top Menu Bar with live clock and system status.
+## 🧱 Tech Stack
 
-## 🛠️ Tech Stack
+- React 19
+- Vite
+- Tailwind CSS
+- GSAP
+- Zustand
+- next-themes
+- lucide-react
+- react-pdf
+- react-tooltip
 
-| Category       | Technology                                      |
-| :------------- | :---------------------------------------------- |
-| **Frontend**   | [React.js](https://reactjs.org/)                |
-| **Build Tool** | [Vite](https://vitejs.dev/)                     |
-| **Styling**    | [Tailwind CSS](https://tailwindcss.com/)        |
-| **Animations** | [GSAP (GreenSock)](https://greensock.com/gsap/) |
-| **Icons**      | Lucide React                                    |
+---
+
+## 📁 Project Structure
+
+- `src/App.jsx` — main application wrapper and boot screen logic
+- `src/main.jsx` — React entry point and theme provider setup
+- `src/components/` — shared UI components such as Navbar, Dock, Welcome, and Home
+- `src/windows/` — individual macOS-style application windows
+- `public/` — static assets and images
+
+---
 
 ## 🚀 Getting Started
 
-1. **Clone & Install:**
-   ```bash
-   git clone https://github.com/sketch-afk/MacOs_Portfolio.git
-   cd MacOs_Portfolio
-   npm install
-   ```
+### Requirements
+
+- Node.js 20+ recommended
+
+### Install
+
+```bash
+npm install
+```
+
+### Run locally
+
+```bash
+npm run dev
+```
+
+### Build for production
+
+```bash
+npm run build
+```
+
+### Preview production build
+
+```bash
+npm run preview
+```
+
+---
+
+## 💡 Notes
+
+- This repo is intended to showcase a portfolio with an immersive desktop-style UI.
+- You can customize the app content and windows inside `src/windows/`.
+- Add or replace screenshots in `public/` and update the README gallery as needed.

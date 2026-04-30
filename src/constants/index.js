@@ -76,12 +76,12 @@ const dockApps = [
     icon: "terminal.png",
     canOpen: true,
   },
-  {
-    id: "vscode",
-    name: "VS Code", // was "Trash"
-    icon: "vscode.png",
-    canOpen: true,
-  },
+  // {
+  //   id: "vscode",
+  //   name: "VS Code", // was "VS Code"
+  //   icon: "vscode.png",
+  //   canOpen: true,
+  // },
   {
     id: "trash",
     name: "Archive", // was "Trash"

@@ -17,7 +17,7 @@ body {
 }
 
 .dark body {
-  background-image: url("/images/darkwallpaper.jpg"); /* Your dark wallpaper */
+  background-image: url("/images/wallpaper-dark.jpg"); 
 }
 
 @theme {
