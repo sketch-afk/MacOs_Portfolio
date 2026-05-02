@@ -20,6 +20,14 @@ export default defineConfig({
       "#hoc": resolve(dirname(fileURLToPath(import.meta.url)), "src/hoc"),
       "#store": resolve(dirname(fileURLToPath(import.meta.url)), "src/store"),
       "#windows": resolve(dirname(fileURLToPath(import.meta.url)), "src/windows"),
+      "#hooks": resolve(dirname(fileURLToPath(import.meta.url)), "src/hooks"),
+      
+      // Mobile aliases
+      "@components": resolve(dirname(fileURLToPath(import.meta.url)), "src/mobile/components"),
+      "@constants": resolve(dirname(fileURLToPath(import.meta.url)), "src/mobile/constants"),
+      "@hoc": resolve(dirname(fileURLToPath(import.meta.url)), "src/mobile/hoc"),
+      "@store": resolve(dirname(fileURLToPath(import.meta.url)), "src/mobile/store"),
+      "@windows": resolve(dirname(fileURLToPath(import.meta.url)), "src/mobile/windows"),
     },
   },
 });
