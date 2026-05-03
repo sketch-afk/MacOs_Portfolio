@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Navbar, Welcome, Dock, Home } from "#components";
-import { Terminal, Safari, Resume, Finder, Text, Image, Contact, Photos, Launchpad, Control, Vscode } from "#windows";
+import { Terminal, Safari, Resume, Finder, Text, Image, Contact, Photos, Launchpad, Control, Vscode, Weather } from "#windows";
 
 import { Draggable } from "gsap/Draggable";
 import { gsap } from "gsap";
@@ -46,6 +46,7 @@ const App = () => {
       <Launchpad />
       <Control />
       <Vscode />
+      <Weather />
       </>
         )}
     </main>

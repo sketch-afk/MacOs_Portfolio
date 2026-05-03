@@ -17,7 +17,7 @@ body {
 }
 
 .dark body {
-  background-image: url("/images/wallpaper-dark.jpg"); 
+  background-image: url("/images/wallpaper-dark.jpg");
 }
 
 @theme {
@@ -43,7 +43,7 @@ body {
     @apply w-dvw h-dvh overflow-hidden;
   }
 
-   nav {
+  nav {
     @apply flex justify-between items-center bg-white/50 dark:bg-[#333333]/50 backdrop-blur-3xl p-2 px-5 select-none;
 
     div {
@@ -57,11 +57,9 @@ body {
     ul {
       @apply flex items-center gap-5 max-sm:hidden;
 
-      
-      img{
-    @apply cursor-pointer dark:invert;
-  }
-
+      img {
+        @apply cursor-pointer dark:invert;
+      }
 
       p {
         @apply text-sm cursor-pointer hover:underline transition-all;
@@ -79,7 +77,6 @@ body {
     @apply p-1 hover:bg-gray-200 rounded hover:cursor-default;
   }
 
-
   #welcome {
     @apply text-gray-200 flex flex-col justify-center items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none max-sm:h-screen max-sm:w-full max-sm:px-10;
 
@@ -87,28 +84,32 @@ body {
       @apply sm:hidden m-7 bg-red-300/20 backdrop-blur-lg p-3 rounded-md absolute top-10;
 
       p {
-        @apply flex-1 text-[16px] text-center font-roboto text-black ;
+        @apply flex-1 text-[16px] text-center font-roboto text-black;
       }
     }
   }
 
   #dock {
-    @apply absolute bottom-5 left-1/2 -translate-x-1/2 z-50 select-none ;
+    @apply absolute bottom-5 left-1/2 -translate-x-1/2 z-50 select-none;
 
     .dock-container {
       @apply bg-white/20 backdrop-blur-md justify-between rounded-2xl p-1.5 flex items-end gap-1.5;
     }
 
     .tooltip {
-      @apply !py-1 !px-3 !w-fit !text-center !text-xs !rounded-md !bg-blue-200 !text-blue-900 !shadow-2xl;
+      @apply !py-1 !px-2 !w-fit !text-center !text-xs !rounded-md !bg-blue-200 !text-blue-900 !shadow-2xl;
     }
 
     .dock-icon {
-      @apply size-14 3xl:size-20 cursor-pointer;
+      @apply size-15 3xl:size-20 cursor-pointer;
 
       img {
         @apply object-cover object-center;
       }
+    }
+
+    .dock-icon.weather-dock-icon {
+      @apply size-13 mb-1.5;
     }
   }
 
@@ -212,7 +213,7 @@ body {
         @apply text-[#00A154] dark:text-[#04b961] space-y-1;
 
         p {
-          @apply flex items-center  ;
+          @apply flex items-center;
 
           svg {
             @apply w-5 me-5;
@@ -223,7 +224,7 @@ body {
   }
 
   #vscode {
-    @apply w-3xl h-[70%] absolute top-20 left-1/4 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl ;
+    @apply w-3xl h-[70%] absolute top-20 left-1/4 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl;
 
     h2 {
       @apply font-bold text-sm text-center w-full text-white;
@@ -234,14 +235,14 @@ body {
 
       .sidebar {
         @apply w-48 bg-[#252526] border-r border-[#333333] p-4;
-        
+
         h3 {
           @apply text-xs font-bold text-gray-500 uppercase tracking-wider mb-4;
         }
 
         ul li {
           @apply flex items-center gap-2 text-sm text-gray-400 py-1 cursor-pointer hover:text-white;
-          
+
           &.active {
             @apply text-white bg-[#37373d] -mx-4 px-4;
           }
@@ -252,7 +253,6 @@ body {
         @apply flex-1 bg-[#1e1e1e] p-6 font-roboto text-sm overflow-auto;
       }
     }
-
   }
 
   #contact {
@@ -278,6 +278,30 @@ body {
 
         p {
           @apply font-semibold text-sm text-white;
+        }
+      }
+    }
+  }
+
+  #weather {
+    @apply w-80 absolute top-20 right-20 bg-white dark:bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+
+    h2 {
+      @apply font-bold text-sm text-center w-full;
+    }
+
+    .content {
+      @apply p-5 flex items-center gap-5;
+
+      img {
+        @apply size-12 object-contain;
+      }
+
+      .details {
+        @apply space-y-1;
+
+        p {
+          @apply text-sm font-medium;
         }
       }
     }
@@ -354,7 +378,7 @@ body {
   }
 
   #finder {
-    @apply absolute w-3xl left-40 top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl ;
+    @apply absolute w-3xl left-40 top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl;
 
     .sidebar {
       @apply w-48 bg-gray-50 dark:bg-[#333333] border-r border-gray-200 dark:border-black flex flex-col p-5 space-y-3;

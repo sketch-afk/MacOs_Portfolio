@@ -1,21 +1,9 @@
 import WindowWrapLaunch from "#hoc/WindowWrapLaunch";
 import React, { useState, useEffect } from "react";
 import useWindowStore from "#store/window.js";
+import { launchpadApps } from "#constants";
 
-const launchpadApps = [
-  { id: "safari", title: "Safari", icon: "/images/safari.png", canOpen: true, component: "Safari"},
-  {
-    id: "terminal",
-    title: "Terminal",
-    icon: "/images/terminal.png",
-    canOpen: true,
-    component: "Terminal",
-  },
-  { id: "finder", title: "Finder", icon: "/images/finder.png", canOpen: true, component: "Finder"},
-  { id: "contact", title: "Contact", icon: "/images/contact.png", canOpen: true, component: "Contact"},
-  { id: "photos", title: "Photos", icon: "/images/photos.png", canOpen: true, component: "Photos" },
-  { id: "vscode", title: "VS Code", icon: "/images/vscode.png", canOpen: true, component: "Vscode" },
-];
+
 
 const Launchpad = () => {
   const [searchTerm, setSearchTerm] = useState("");

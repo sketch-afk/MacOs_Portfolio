@@ -9,6 +9,7 @@ import Photos from "#windows/Photos.jsx";
 import Launchpad from "#windows/Launchpad.jsx";
 import Control from "#windows/Control.jsx";
 import Vscode from "#windows/Vscode.jsx";
+import Weather from "#windows/Weather.jsx";
 
 export {
   Terminal,
@@ -21,5 +22,6 @@ export {
   Photos,
   Launchpad,
   Control,
-  Vscode
+  Vscode,
+  Weather
 };

@@ -1,6 +1,7 @@
+import { MOBILE_BREAKPOINT } from "#constants";
 import { useState, useEffect } from "react";
 
-const MOBILE_BREAKPOINT = 768;
+
 
 export function useIsMobile() {
   // Check the window size immediately when the app loads

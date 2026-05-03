@@ -1,3 +1,7 @@
+const MOBILE_BREAKPOINT = 768;
+
+export { MOBILE_BREAKPOINT };
+
 const navLinks = [
   {
     id: 1,
@@ -76,18 +80,24 @@ const dockApps = [
     icon: "terminal.png",
     canOpen: true,
   },
-  // {
-  //   id: "vscode",
-  //   name: "VS Code", // was "VS Code"
-  //   icon: "vscode.png",
-  //   canOpen: true,
-  // },
   {
-    id: "trash",
-    name: "Archive", // was "Trash"
-    icon: "trash.png",
-    canOpen: false,
+    id: "weather",
+    name: "Weather", // was "Weather"
+    icon: "weather.png",
+    canOpen: true,
   },
+  {
+    id: "vscode",
+    name: "VS Code", // was "VS Code"
+    icon: "vscode.png",
+    canOpen: true,
+  },
+  // {
+  //   id: "trash",
+  //   name: "Archive", // was "Trash"
+  //   icon: "trash.png",
+  //   canOpen: false,
+  // },
 ];
 
 const blogPosts = [
@@ -583,6 +593,31 @@ const WINDOW_CONFIG = {
     zIndex: INITIAL_Z_INDEX,
     data: null,
   },
+  weather: {
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    zIndex: INITIAL_Z_INDEX,
+    data: null,
+  },
 };
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };
+
+const launchpadApps = [
+  { id: "safari", title: "Safari", icon: "/images/safari.png", canOpen: true, component: "Safari"},
+  {
+    id: "terminal",
+    title: "Terminal",
+    icon: "/images/terminal.png",
+    canOpen: true,
+    component: "Terminal",
+  },
+  { id: "finder", title: "Finder", icon: "/images/finder.png", canOpen: true, component: "Finder"},
+  { id: "contact", title: "Contact", icon: "/images/contact.png", canOpen: true, component: "Contact"},
+  { id: "photos", title: "Photos", icon: "/images/photos.png", canOpen: true, component: "Photos" },
+  { id: "vscode", title: "VS Code", icon: "/images/vscode.png", canOpen: true, component: "Vscode" },
+  { id: "weather", title: "Weather", icon: "/images/weather.png", canOpen: true, component: "Weather" },
+];
+
+export { launchpadApps };
