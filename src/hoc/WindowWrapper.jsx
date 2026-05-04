@@ -38,6 +38,7 @@ const WindowWrapper = (Component, windowKey) => {
       if (!el) return;
 
       const [instance] = Draggable.create(el, {
+        trigger: el.querySelector("#window-header"),
         onPress: () => focusWindow(windowKey),
       });
 
@@ -55,6 +56,7 @@ const WindowWrapper = (Component, windowKey) => {
       <section
         id={windowKey}
         ref={ref}
+        onPointerDown={() => focusWindow(windowKey)}
         style={{
           zIndex,
           ...(isMaximized
