@@ -1,71 +1,84 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
 
 import { navIcons } from "@constants";
-import useWindowStoreMob from '@store/app';
-
+import useWindowStoreMob from "@store/app";
 
 const NavbarMob = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [batteryLevel, setBatteryLevel] = useState(100);
-    const [isCharging, setIsCharging] = useState(false);
-    const { openWindow, closeWindow } = useWindowStoreMob();
+  const [isCharging, setIsCharging] = useState(false);
+  const { openWindow, closeWindow } = useWindowStoreMob();
+  const [currentTime, setCurrentTime] = useState(dayjs());
 
-    const updateBatteryStatus = (battery) => {
-        setBatteryLevel(Math.round(battery.level * 100));
-        setIsCharging(battery.charging);
-      };
-    
-      useEffect(() => {
-        if ("getBattery" in navigator) {
-          navigator
-            .getBattery()
-            .then((battery) => {
-              updateBatteryStatus(battery);
-    
-              battery.addEventListener("levelchange", () =>
-                updateBatteryStatus(battery),
-              );
-              battery.addEventListener("chargingchange", () =>
-                updateBatteryStatus(battery),
-              );
-            })
-            .catch(() => {
-              setBatteryLevel(100);
-              setIsCharging(false);
-            });
-        }
-      }, []);
+  useEffect(() => {
+  const timer = setInterval(() => {
+    setCurrentTime(dayjs());
+  }, 1000);
+  return () => clearInterval(timer);
+}, []);
 
+  const updateBatteryStatus = (battery) => {
+    setBatteryLevel(Math.round(battery.level * 100));
+    setIsCharging(battery.charging);
+  };
+
+  useEffect(() => {
+    let battery = null;
+    const handleChange = () => {
+      if (battery) updateBatteryStatus(battery);
+    };
+
+    if ("getBattery" in navigator) {
+      navigator
+        .getBattery()
+        .then((b) => {
+          battery = b;
+          updateBatteryStatus(battery);
+          battery.addEventListener("levelchange", handleChange);
+          battery.addEventListener("chargingchange", handleChange);
+        })
+        .catch(() => {
+          setBatteryLevel(100);
+          setIsCharging(false);
+        });
+    }
+
+    return () => {
+      if (battery) {
+        battery.removeEventListener("levelchange", handleChange);
+        battery.removeEventListener("chargingchange", handleChange);
+      }
+    };
+  }, []);
   return (
-    <nav className='mob-nav'>
+    <nav className="mob-nav">
       <div>
         <img className="dark:invert" src="/images/logo.svg" alt="" />
         <p className="font-bold max-sm:hidden">Yash's Portfolio</p>
-      <time dateTime="">{dayjs().format("h:mm A")}</time>
+        <time dateTime={currentTime.toISOString()}>{currentTime.format("h:mm A")}</time>
       </div>
-      
+
       <div>
         <ul>
           {navIcons.map(({ id, img, type }) => (
-            <li
-
-              key={id}
-              onClick={() => {
-                if (isOpen) {
-                  closeWindow(type);
-                  setIsOpen(false);
-                } else {
-                  openWindow(type);
-                  setIsOpen(true);
-                }
-              }}
-            >
-              <img
-                src={img}
+            <li key={id}>
+              <button
+                type="button"
                 className="icon-hover"
-                alt={`icon-${id}`}
-              />
+                onClick={() => {
+                  if (isOpen) {
+                    closeWindow(type);
+                    setIsOpen(false);
+                  } else {
+                    openWindow(type);
+                    setIsOpen(true);
+                  }
+                }}
+                aria-pressed={isOpen}
+              >
+                <img src={img} alt={`icon-${id}`} />
+              </button>
             </li>
           ))}
           <span className="text-sm">{batteryLevel}%</span>
@@ -83,11 +96,10 @@ const NavbarMob = () => {
               )}
             </div>
           </div>
-          
         </ul>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default NavbarMob
+export default NavbarMob;

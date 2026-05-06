@@ -48,12 +48,16 @@ const DockMob = () => {
         });
       });
     };
-    dock.addEventListener("mousemove", handleMouseMove);
-    dock.addEventListener("mouseleave", resetIcons);
+    dock.addEventListener("pointermove", handleMouseMove);
+    dock.addEventListener("pointerleave", resetIcons);
+    // dock.addEventListener("mousemove", handleMouseMove);
+    // dock.addEventListener("mouseleave", resetIcons);
 
     return () => {
-      dock.removeEventListener("mousemove", handleMouseMove);
-      dock.removeEventListener("mouseleave", resetIcons);
+      dock.removeEventListener("pointermove", handleMouseMove);
+      dock.removeEventListener("pointerleave", resetIcons);
+      // dock.removeEventListener("mousemove", handleMouseMove);
+      // dock.removeEventListener("mouseleave", resetIcons);
     };
   }, []);
 
@@ -105,4 +109,4 @@ const DockMob = () => {
   );
 };
 
-export default DockMob
+export default DockMob;

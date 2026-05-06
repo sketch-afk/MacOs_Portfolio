@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
-import { INITIAL_Z_INDEX, WINDOW_CONFIG,  } from "@constants/index.js";
+import { INITIAL_Z_INDEX, WINDOW_CONFIG } from "@constants/index.js";
 
 const useWindowStoreMob = create(
   immer((set) => ({
@@ -53,6 +53,7 @@ const useWindowStoreMob = create(
     focusWindow: (windowKey) =>
       set((state) => {
         const win = state.windows[windowKey];
+        if (!win) return;
         win.zIndex = state.nextZIndex++;
       }),
   })),

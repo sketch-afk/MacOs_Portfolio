@@ -11,9 +11,14 @@ const WindowControlsMob = ({
 
   return (
     <div id="app-controls">
-      <div className="cursor-pointer flex items-center"  onClick={() => closeWindow(target)} >
-        <ChevronLeft className="icon"/> Go Back
-      </div>
+      <button
+        type="button"
+        className="cursor-pointer flex items-center"
+        onClick={() => closeWindow(target)}
+        aria-label="Go back"
+      >
+        <ChevronLeft className="icon" /> Go Back
+      </button>
     </div>
   );
 };

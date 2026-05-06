@@ -10,6 +10,14 @@ const Navbar = () => {
   const [batteryLevel, setBatteryLevel] = useState(100);
   const [isCharging, setIsCharging] = useState(false);
   const { openWindow, closeWindow } = useWindowStore();
+  const [currentTime, setCurrentTime] = useState(dayjs());
+
+   useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(dayjs());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   const updateBatteryStatus = (battery) => {
     setBatteryLevel(Math.round(battery.level * 100));
@@ -17,25 +25,33 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    if ("getBattery" in navigator) {
-      navigator
-        .getBattery()
-        .then((battery) => {
-          updateBatteryStatus(battery);
-
-          battery.addEventListener("levelchange", () =>
-            updateBatteryStatus(battery),
-          );
-          battery.addEventListener("chargingchange", () =>
-            updateBatteryStatus(battery),
-          );
-        })
-        .catch(() => {
-          setBatteryLevel(100);
-          setIsCharging(false);
-        });
-    }
-  }, []);
+      let battery = null;
+      const handleChange = () => {
+        if (battery) updateBatteryStatus(battery);
+      };
+  
+      if ("getBattery" in navigator) {
+        navigator
+          .getBattery()
+          .then((b) => {
+            battery = b;
+            updateBatteryStatus(battery);
+            battery.addEventListener("levelchange", handleChange);
+            battery.addEventListener("chargingchange", handleChange);
+          })
+          .catch(() => {
+            setBatteryLevel(100);
+            setIsCharging(false);
+          });
+      }
+  
+      return () => {
+        if (battery) {
+          battery.removeEventListener("levelchange", handleChange);
+          battery.removeEventListener("chargingchange", handleChange);
+        }
+      };
+    }, []);
 
   return (
     <nav className="nav">
@@ -69,28 +85,27 @@ const Navbar = () => {
             </div>
           </div>
           {navIcons.map(({ id, img, type }) => (
-            <li
-
-              key={id}
-              onClick={() => {
-                if (isOpen) {
-                  closeWindow(type);
-                  setIsOpen(false);
-                } else {
-                  openWindow(type);
-                  setIsOpen(true);
-                }
-              }}
-            >
-              <img
-                src={img}
+            <li key={id}>
+              <button
+                type="button"
                 className="icon-hover"
-                alt={`icon-${id}`}
-              />
+                onClick={() => {
+                  if (isOpen) {
+                    closeWindow(type);
+                    setIsOpen(false);
+                  } else {
+                    openWindow(type);
+                    setIsOpen(true);
+                  }
+                }}
+                aria-pressed={isOpen}
+              >
+                <img src={img} alt={`icon-${id}`} />
+              </button>
             </li>
           ))}
         </ul>
-        <time dateTime="">{dayjs().format("ddd, MMM, D h:mm A")}</time>
+        <time dateTime={currentTime.toISOString()}>{currentTime.format("ddd, MMM, D h:mm A")}</time>
       </div>
     </nav>
   );
