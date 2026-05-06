@@ -1,8 +1,8 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
-import { WINDOW_CONFIG, INITIAL_Z_INDEX } from "#constants/index.js";
+import { INITIAL_Z_INDEX, WINDOW_CONFIG } from "@constants/index.js";
 
-const useWindowStore = create(
+const useWindowStoreMob = create(
   immer((set) => ({
     windows: WINDOW_CONFIG,
     nextZIndex: INITIAL_Z_INDEX + 1,
@@ -59,4 +59,4 @@ const useWindowStore = create(
   })),
 );
 
-export default useWindowStore;
+export default useWindowStoreMob;

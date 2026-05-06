@@ -27,7 +27,7 @@ export default defineConfig({
       "@constants": resolve(dirname(fileURLToPath(import.meta.url)), "src/mobile/constants"),
       "@hoc": resolve(dirname(fileURLToPath(import.meta.url)), "src/mobile/hoc"),
       "@store": resolve(dirname(fileURLToPath(import.meta.url)), "src/mobile/store"),
-      "@windows": resolve(dirname(fileURLToPath(import.meta.url)), "src/mobile/windows"),
+      "@apps": resolve(dirname(fileURLToPath(import.meta.url)), "src/mobile/apps"),
     },
   },
 });
