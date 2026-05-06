@@ -43,8 +43,8 @@ body {
     @apply w-dvw h-dvh overflow-hidden;
   }
 
-  nav {
-    @apply flex justify-between items-center bg-white/50 dark:bg-[#333333]/50 backdrop-blur-3xl p-2 px-5 select-none;
+  .nav {
+    @apply flex justify-between items-center bg-white/50 dark:bg-[#333333]/50 backdrop-blur-3xl p-2 px-5 select-none tracking-color duration-300;
 
     div {
       @apply flex items-center max-sm:w-full max-sm:justify-center gap-5;
@@ -58,7 +58,32 @@ body {
       @apply flex items-center gap-5 max-sm:hidden;
 
       img {
-        @apply cursor-pointer dark:invert;
+        @apply cursor-pointer dark:invert transition-colors duration-300;
+      }
+
+      p {
+        @apply text-sm cursor-pointer hover:underline transition-all;
+      }
+    }
+
+    time {
+      @apply dark:text-white text-sm font-medium text-black;
+    }
+  }
+  .mob-nav {
+    @apply flex justify-between bg-white/50 dark:bg-[#333333]/50 backdrop-blur-3xl px-3 py-1 select-none transition-colors duration-300;
+
+    div {
+      @apply flex items-center gap-2 ;
+
+
+    }
+
+    ul {
+      @apply flex items-center gap-2 ;
+
+      img {
+        @apply cursor-pointer dark:invert size-4 transition-colors duration-300;
       }
 
       p {
@@ -128,8 +153,14 @@ body {
       @apply size-3.5 rounded-full bg-[#2acb42] cursor-pointer;
     }
   }
+  #app-controls {
+    @apply flex gap-2;
+  }
 
   #window-header {
+    @apply flex items-center justify-between px-4 py-2 rounded-t-lg bg-gray-200 dark:bg-[#333333] border-b border-gray-200  dark:border-none select-none text-sm text-gray-400 dark:text-white;
+  }
+  #app-header {
     @apply flex items-center justify-between px-4 py-2 rounded-t-lg bg-gray-200 dark:bg-[#333333] border-b border-gray-200  dark:border-none select-none text-sm text-gray-400 dark:text-white;
   }
 

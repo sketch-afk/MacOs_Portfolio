@@ -38,7 +38,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav>
+    <nav className="nav">
       <div>
         <img className="dark:invert" src="/images/logo.svg" alt="" />
         <p className="font-bold max-sm:hidden">Yash's Portfolio</p>

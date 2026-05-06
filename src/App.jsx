@@ -7,24 +7,28 @@ import { Draggable } from "gsap/Draggable";
 import { gsap } from "gsap";
 import BootScreen from "#components/BootScreen";
 import { useIsMobile } from "#hooks/useIsMobile";
-import {Mobile , Terminalmob }  from "@windows";
+import { Terminalmob }  from "@apps";
+import { DockMob, NavbarMob, WelcomeMob } from "@components";
 gsap.registerPlugin(Draggable);
 
 const App = () => {
   const [isBooted, setIsBooted] = useState(false);
   const isMobile = useIsMobile();
 
-  // if (isMobile) {
-  //   return (
-  //     <>
-  //       {!isBooted && <BootScreen onBootComplete={() => setIsBooted(true)} />}
-  //         {isBooted && (<>
-  //           <Mobile />
-  //           <Terminalmob />
-  //         </>)}
-  //     </>
-  //   )
-  // }
+  if (isMobile) {
+    return (
+      <>
+        {!isBooted && <BootScreen onBootComplete={() => setIsBooted(true)} />}
+          {isBooted && (<>
+            <NavbarMob />
+            <WelcomeMob />
+            <DockMob />
+          </>)}
+          
+      </>
+
+    )
+  }
 
   return (
     <main>

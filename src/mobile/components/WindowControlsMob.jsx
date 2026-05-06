@@ -1,0 +1,21 @@
+import useWindowStoreMob from "@store/app.js";
+import { ChevronLast, ChevronLeft, PanelLeft } from "lucide-react";
+import React from "react";
+
+const WindowControlsMob = ({
+  target,
+  closeWindow: closeWindowProp,
+}) => {
+  const windowStore = useWindowStoreMob();
+  const closeWindow = closeWindowProp ?? windowStore.closeWindow;
+
+  return (
+    <div id="app-controls">
+      <div className="cursor-pointer flex items-center"  onClick={() => closeWindow(target)} >
+        <ChevronLeft className="icon"/> Go Back
+      </div>
+    </div>
+  );
+};
+
+export default WindowControlsMob;
