@@ -23,6 +23,7 @@ const App = () => {
             <NavbarMob />
             <WelcomeMob />
             <DockMob />
+            <Terminalmob />
           </>)}
           
       </>

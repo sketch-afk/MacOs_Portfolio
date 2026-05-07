@@ -50,12 +50,6 @@ const dockApps = [
     icon: "safari.png",
     canOpen: true,
   },
-  // {
-  //   id: "photos",
-  //   name: "Gallery", // was "Photos"
-  //   icon: "photos.png",
-  //   canOpen: true,
-  // },
   {
     id: "contact",
     name: "Contact", // or "Get in touch"
@@ -73,18 +67,6 @@ const dockApps = [
   //   name: "Weather", // was "Weather"
   //   icon: "weather.png",
   //   canOpen: true,
-  // },
-  // {
-  //   id: "vscode",
-  //   name: "VS Code", // was "VS Code"
-  //   icon: "vscode.png",
-  //   canOpen: true,
-  // },
-  // {
-  //   id: "trash",
-  //   name: "Archive", // was "Trash"
-  //   icon: "trash.png",
-  //   canOpen: false,
   // },
 ];
 

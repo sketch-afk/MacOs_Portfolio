@@ -12,11 +12,11 @@ const NavbarMob = () => {
   const [currentTime, setCurrentTime] = useState(dayjs());
 
   useEffect(() => {
-  const timer = setInterval(() => {
-    setCurrentTime(dayjs());
-  }, 1000);
-  return () => clearInterval(timer);
-}, []);
+    const timer = setInterval(() => {
+      setCurrentTime(dayjs());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   const updateBatteryStatus = (battery) => {
     setBatteryLevel(Math.round(battery.level * 100));
@@ -54,9 +54,11 @@ const NavbarMob = () => {
   return (
     <nav className="mob-nav">
       <div>
-        <img className="dark:invert" src="/images/logo.svg" alt="" />
+        <img className="dark:invert size-4 mb-0.5" src="/images/logo.svg" alt="" />
         <p className="font-bold max-sm:hidden">Yash's Portfolio</p>
-        <time dateTime={currentTime.toISOString()}>{currentTime.format("h:mm A")}</time>
+        <time dateTime={currentTime.toISOString()}>
+          {currentTime.format("h:mm A")}
+        </time>
       </div>
 
       <div>
@@ -65,7 +67,7 @@ const NavbarMob = () => {
             <li key={id}>
               <button
                 type="button"
-                className="icon-hover"
+                className="icon-hover cursor-pointer"
                 onClick={() => {
                   if (isOpen) {
                     closeWindow(type);
@@ -81,19 +83,21 @@ const NavbarMob = () => {
               </button>
             </li>
           ))}
-          <span className="text-sm">{batteryLevel}%</span>
-          <div className="relative">
-            <div className="w-6 h-3 border border-current rounded-sm relative">
-              <div
-                className="absolute top-0 left-0 bottom-0 bg-current"
-                style={{ width: `${batteryLevel}%` }}
-              ></div>
-              <div className="absolute -right-1 top-1/2 transform -translate-y-1/2 w-1 h-2 bg-current rounded-r-sm"></div>
-              {isCharging && (
-                <div className="absolute inset-0 flex items-center justify-center text-xs">
-                  ⚡
-                </div>
-              )}
+          <div className="flex items-center gap-2">
+            <span className="text-sm">{batteryLevel}%</span>
+            <div className="relative">
+              <div className="w-6 h-3 border border-current rounded-sm relative">
+                <div
+                  className="absolute top-0 left-0 bottom-0 bg-current"
+                  style={{ width: `${batteryLevel}%` }}
+                ></div>
+                <div className="absolute -right-1 top-1/2 transform -translate-y-1/2 w-1 h-2 bg-current rounded-r-sm"></div>
+                {isCharging && (
+                  <div className="absolute inset-0 flex items-center justify-center text-xs">
+                    ⚡
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </ul>

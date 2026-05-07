@@ -1,7 +1,8 @@
-import WindowControlsMob from "@components/WindowControlsMob.jsx";
 import React from "react";
+import MobileWrapper from "@hoc/MobileWrapper.jsx";
 import { techStack } from "@constants";
 import { Check, Flag } from "lucide-react";
+import {WindowControlsMob} from "@components";
 
 const Terminalmob = () => {
   return (
@@ -49,4 +50,6 @@ const Terminalmob = () => {
   );
 };
 
-export default Terminalmob;
+const TerminalWindowMob = MobileWrapper(Terminalmob, "terminal");
+
+export default TerminalWindowMob;

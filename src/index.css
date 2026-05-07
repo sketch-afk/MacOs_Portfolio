@@ -74,16 +74,16 @@ body {
     @apply flex justify-between bg-white/50 dark:bg-[#333333]/50 backdrop-blur-3xl px-3 py-1 select-none transition-all duration-300;
 
     div {
-      @apply flex items-center gap-2 ;
+      @apply flex items-center gap-4 ;
 
 
     }
 
     ul {
-      @apply flex items-center gap-2 ;
+      @apply flex items-center justify-center gap-4 ;
 
       img {
-        @apply cursor-pointer dark:invert size-4 transition-all duration-300;
+        @apply cursor-pointer dark:invert size-3 transition-all duration-300;
       }
 
       p {
@@ -208,6 +208,52 @@ body {
     }
   }
 
+  #terminal {
+    @apply w-xl absolute top-32 left-1/12 bg-white dark:bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+
+    h2 {
+      @apply font-bold text-sm text-center w-full;
+    }
+
+    .techstack {
+      @apply text-sm font-roboto p-5;
+
+      .label {
+        @apply flex items-center ms-10 mt-7;
+      }
+
+      .content {
+        @apply py-5 my-5 border-y border-dashed space-y-1;
+
+        li {
+          .check {
+            @apply text-[#00A154] dark:text-[#04b961] w-5;
+          }
+
+          h3 {
+            @apply font-semibold text-[#00A154] dark:text-[#04b961] w-32 ms-5;
+          }
+
+          ul {
+            @apply flex items-center gap-3;
+          }
+        }
+      }
+
+      .footnote {
+        @apply text-[#00A154] dark:text-[#04b961] space-y-1;
+
+        p {
+          @apply flex items-center;
+
+          svg {
+            @apply w-5 me-5;
+          }
+        }
+      }
+    }
+  }
+  
   #terminal {
     @apply w-xl absolute top-32 left-1/12 bg-white dark:bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
