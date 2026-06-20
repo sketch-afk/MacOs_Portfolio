@@ -1,60 +1,28 @@
-import React, { useState } from "react";
-
-import { Navbar, Welcome, Dock, Home } from "#components";
-import { Terminal, Safari, Resume, Finder, Text, Image, Contact, Photos, Launchpad, Control, Vscode, Weather } from "#windows";
+import React, { useState, Suspense, lazy } from "react";
 
 import { Draggable } from "gsap/Draggable";
 import { gsap } from "gsap";
 import BootScreen from "#components/BootScreen";
 import { useIsMobile } from "#hooks/useIsMobile";
-import { Terminalmob }  from "@apps";
-import { DockMob, NavbarMob, WelcomeMob } from "@components";
+
 gsap.registerPlugin(Draggable);
+
+const DesktopApp = lazy(() => import('./DesktopApp'));
+const MobileApp = lazy(() => import('./MobileApp'));
 
 const App = () => {
   const [isBooted, setIsBooted] = useState(false);
   const isMobile = useIsMobile();
 
-  if (isMobile) {
-    return (
-      <>
-        {!isBooted && <BootScreen onBootComplete={() => setIsBooted(true)} />}
-          {isBooted && (<>
-            <NavbarMob />
-            <WelcomeMob />
-            <DockMob />
-            <Terminalmob />
-          </>)}
-          
-      </>
-
-    )
-  }
-
   return (
-    <main>
+    <>
       {!isBooted && <BootScreen onBootComplete={() => setIsBooted(true)} />}
-        {isBooted && (
-          <>
-      <Navbar />
-      <Welcome />
-      <Dock />
-      <Terminal />
-      <Safari />
-      <Resume />
-      <Finder />
-      <Text />
-      <Image />
-      <Contact />
-      <Home />
-      <Photos />
-      <Launchpad />
-      <Control />
-      <Vscode />
-      <Weather />
-      </>
-        )}
-    </main>
+      {isBooted && (
+        <Suspense fallback={<div style={{ width: '100vw', height: '100vh', backgroundColor: '#000' }}></div>}>
+          {isMobile ? <MobileApp /> : <DesktopApp />}
+        </Suspense>
+      )}
+    </>
   );
 };
 

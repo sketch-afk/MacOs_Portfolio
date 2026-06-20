@@ -254,51 +254,6 @@ body {
     }
   }
   
-  #terminal {
-    @apply w-xl absolute top-32 left-1/12 bg-white dark:bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
-
-    h2 {
-      @apply font-bold text-sm text-center w-full;
-    }
-
-    .techstack {
-      @apply text-sm font-roboto p-5;
-
-      .label {
-        @apply flex items-center ms-10 mt-7;
-      }
-
-      .content {
-        @apply py-5 my-5 border-y border-dashed space-y-1;
-
-        li {
-          .check {
-            @apply text-[#00A154] dark:text-[#04b961] w-5;
-          }
-
-          h3 {
-            @apply font-semibold text-[#00A154] dark:text-[#04b961] w-32 ms-5;
-          }
-
-          ul {
-            @apply flex items-center gap-3;
-          }
-        }
-      }
-
-      .footnote {
-        @apply text-[#00A154] dark:text-[#04b961] space-y-1;
-
-        p {
-          @apply flex items-center;
-
-          svg {
-            @apply w-5 me-5;
-          }
-        }
-      }
-    }
-  }
 
   #vscode {
     @apply w-3xl h-[70%] absolute top-20 left-1/4 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl;

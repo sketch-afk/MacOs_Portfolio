@@ -25,7 +25,7 @@ const navIcons = [
     type: "wifi"
   },
   {
-    id: 4,
+    id: 2,
     img: "/icons/mode.svg",
     type: "control"
   },
@@ -575,7 +575,7 @@ const WINDOW_CONFIG = {
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };
 
 const launchpadApps = [
-  { id: "safari", title: "Safari", icon: "/images/safari.png", canOpen: true, component: "Safari"},
+  { id: "safari", title: "Safari", icon: "/images/safari.png", canOpen: true, component: "Safari" },
   {
     id: "terminal",
     title: "Terminal",
@@ -583,10 +583,10 @@ const launchpadApps = [
     canOpen: true,
     component: "Terminal",
   },
-  { id: "finder", title: "Finder", icon: "/images/finder.png", canOpen: true, component: "Finder"},
-  { id: "contact", title: "Contact", icon: "/images/contact.png", canOpen: true, component: "Contact"},
+  { id: "finder", title: "Finder", icon: "/images/finder.png", canOpen: true, component: "Finder" },
+  { id: "contact", title: "Contact", icon: "/images/contact.png", canOpen: true, component: "Contact" },
   { id: "photos", title: "Photos", icon: "/images/photos.png", canOpen: true, component: "Photos" },
-  { id: "vscode", title: "VS Code", icon: "/images/vscode.png", canOpen: true, component: "Vscode" },
+  // { id: "vscode", title: "VS Code", icon: "/images/vscode.png", canOpen: true, component: "Vscode" },
   { id: "weather", title: "Weather", icon: "/images/weather.png", canOpen: true, component: "Weather" },
 ];
 
