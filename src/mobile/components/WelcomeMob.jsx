@@ -87,9 +87,7 @@ const Welcome = () => {
                 )}
             </h1>
 
-            <div className='small-screen'>
-                <p>This Portfolio is designed for desktop/tablet screens only (or you can switch to desktop view).</p>
-            </div>
+
         </section>
     )
 }

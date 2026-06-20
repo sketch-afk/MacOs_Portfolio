@@ -1,84 +1,69 @@
-import { useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
 import useWindowStoreMob from "@store/app.js";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { Draggable } from "gsap/Draggable";
 
-const WindowWrapper = (Component, windowKey) => {
+const MobileWrapper = (Component, windowKey) => {
   const Wrapped = (props) => {
-    const { focusWindow, windows } = useWindowStoreMob();
-    const { isOpen, zIndex, isMaximized } = windows[windowKey];
+    const { activeApp } = useWindowStoreMob();
+    const isOpen = activeApp === windowKey;
     const ref = useRef(null);
 
     useGSAP(() => {
       const el = ref.current;
-      if (!el || !isOpen) return;
+      if (!el) return;
 
-      el.style.display = "block";
-
-      gsap.fromTo(
-        el,
-        {
-          scale: 0.8,
+      if (isOpen) {
+        el.style.display = "block";
+        gsap.fromTo(
+          el,
+          {
+            opacity: 0,
+            y: "100%", // Slide up from bottom like an iOS app
+          },
+          {
+            opacity: 1,
+            y: "0%",
+            duration: 0.3,
+            ease: "power3.out",
+          }
+        );
+      } else {
+        // Animate out
+        gsap.to(el, {
           opacity: 0,
-          y: 40,
-        },
-        {
-          scale: 1,
-          opacity: 1,
-          y: 0,
+          y: "100%",
           duration: 0.2,
-          ease: "power3.out",
-        },
-      );
-    }, [isOpen]);
-
-    useGSAP(() => {
-      const el = ref.current;
-      if (!el) return;
-
-      const [instance] = Draggable.create(el, {
-        trigger: el.querySelector("#window-header"),
-        onPress: () => focusWindow(windowKey),
-      });
-
-      return () => instance.kill();
-    }, []);
-
-    useLayoutEffect(() => {
-      const el = ref.current;
-      if (!el) return;
-
-      el.style.display = isOpen ? "block" : "none";
+          ease: "power3.in",
+          onComplete: () => {
+            el.style.display = "none";
+          }
+        });
+      }
     }, [isOpen]);
 
     return (
       <section
         id={windowKey}
         ref={ref}
-        onPointerDown={() => focusWindow(windowKey)}
         style={{
-          zIndex,
-          ...(isMaximized
-            ? {
-                top: 0,
-                left: 0,
-                width: "100vw",
-                height: "100vh",
-                borderRadius: 0,
-              }
-            : {}),
+          display: isOpen ? "block" : "none", // Initially manage display
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          zIndex: 50, // Always on top when active
         }}
-        className="absolute"
+        className="fixed bg-white dark:bg-black overflow-y-auto" // Full screen, scrollable
       >
         <Component {...props} />
       </section>
     );
   };
 
-  Wrapped.displayName = `WindowWrapper(${Component.displayName || Component.name || "Component"})`;
+  Wrapped.displayName = `MobileWrapper(${Component.displayName || Component.name || "Component"})`;
 
   return Wrapped;
 };
 
-export default WindowWrapper;
+export default MobileWrapper;

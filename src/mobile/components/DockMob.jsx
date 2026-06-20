@@ -8,7 +8,7 @@ import useWindowStoreMob from "@store/app.js";
 
 const DockMob = () => {
   const dockRef = useRef(null);
-  const { openWindow, closeWindow, windows } = useWindowStoreMob();
+  const { openApp, closeApp, activeApp } = useWindowStoreMob();
 
   useGSAP(() => {
     const dock = dockRef.current;
@@ -64,19 +64,11 @@ const DockMob = () => {
   const toggleApp = (app) => {
     if (!app.canOpen) return;
 
-    const window = windows[app.id];
-
-    if (!window) {
-      console.error(`Window not found for app id: ${app.id}`);
-      return;
-    }
-
-    if (window.isOpen) {
-      closeWindow(app.id);
+    if (activeApp === app.id) {
+      closeApp();
     } else {
-      openWindow(app.id);
+      openApp(app.id);
     }
-    // console.log(windows);
   };
 
   return (

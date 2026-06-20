@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
 
 import { navIcons } from "@constants";
-import useWindowStoreMob from "@store/app";
+import useWindowStoreMob from "@store/app.js";
 
 const NavbarMob = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { openApp, closeApp, activeApp } = useWindowStoreMob();
   const [batteryLevel, setBatteryLevel] = useState(100);
   const [isCharging, setIsCharging] = useState(false);
-  const { openWindow, closeWindow } = useWindowStoreMob();
   const [currentTime, setCurrentTime] = useState(dayjs());
 
   useEffect(() => {
@@ -52,7 +51,7 @@ const NavbarMob = () => {
     };
   }, []);
   return (
-    <nav className="mob-nav">
+    <nav className="mob-nav relative z-50">
       <div>
         <img className="dark:invert size-4 mb-0.5" src="/images/logo.svg" alt="" />
         <p className="font-bold max-sm:hidden">Yash's Portfolio</p>
@@ -69,15 +68,13 @@ const NavbarMob = () => {
                 type="button"
                 className="icon-hover cursor-pointer"
                 onClick={() => {
-                  if (isOpen) {
-                    closeWindow(type);
-                    setIsOpen(false);
+                  if (activeApp === type) {
+                    closeApp();
                   } else {
-                    openWindow(type);
-                    setIsOpen(true);
+                    openApp(type);
                   }
                 }}
-                aria-pressed={isOpen}
+                aria-pressed={activeApp === type}
               >
                 <img src={img} alt={`icon-${id}`} />
               </button>
