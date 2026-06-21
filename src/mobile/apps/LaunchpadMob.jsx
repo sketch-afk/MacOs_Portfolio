@@ -80,7 +80,7 @@ const LaunchpadMob = () => {
                 className="w-14 h-14 object-contain drop-shadow-lg"
               />
             </div>
-            <span className="text-gray-900 dark:text-white text-[11px] font-medium text-center line-clamp-1 px-1 drop-shadow-sm">
+            <span className="text-white text-[11px] font-medium text-center line-clamp-1 px-1 drop-shadow-sm">
               {app.title}
             </span>
           </div>

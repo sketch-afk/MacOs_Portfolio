@@ -70,17 +70,18 @@ body {
       @apply dark:text-white text-sm font-medium text-black;
     }
   }
+
   .mob-nav {
     @apply flex justify-between bg-white/50 dark:bg-[#333333]/50 backdrop-blur-3xl px-3 py-1 select-none transition-all duration-300;
 
     div {
-      @apply flex items-center gap-4 ;
+      @apply flex items-center gap-4;
 
 
     }
 
     ul {
-      @apply flex items-center justify-center gap-4 ;
+      @apply flex items-center justify-center gap-4;
 
       img {
         @apply cursor-pointer dark:invert size-3 transition-all duration-300;
@@ -100,6 +101,10 @@ body {
 @layer components {
   .icon {
     @apply p-1 hover:bg-gray-200 rounded hover:cursor-default;
+  }
+
+  .iconmob {
+    @apply p-1 rounded hover:cursor-default;
   }
 
   #welcome {
@@ -134,8 +139,9 @@ body {
     }
 
     .dock-icon.weather-dock-icon {
-      @apply size-13 mb-1.5;
+      @apply size-12.5 mb-1.5;
     }
+    
   }
 
   #window-controls {
@@ -153,15 +159,17 @@ body {
       @apply size-3.5 rounded-full bg-[#2acb42] cursor-pointer;
     }
   }
+
   #app-controls {
     @apply flex gap-2;
   }
 
   #window-header {
-    @apply flex items-center justify-between px-4 py-2 rounded-t-lg bg-gray-200 dark:bg-[#333333] border-b border-gray-200  dark:border-none select-none text-sm text-gray-400 dark:text-white;
+    @apply flex items-center justify-between px-4 py-2 rounded-t-lg bg-gray-200 dark:bg-[#333333] border-b border-gray-200 dark:border-none select-none text-sm text-gray-400 dark:text-white;
   }
+
   #app-header {
-    @apply flex items-center justify-between px-4 py-2 rounded-t-lg bg-gray-200 dark:bg-[#333333] border-b border-gray-200  dark:border-none select-none text-sm text-gray-400 dark:text-white;
+    @apply flex items-center justify-between px-1.5 py-0.5 bg-gray-200 dark:bg-[#333333] border-b border-gray-200 dark:border-none select-none text-xs text-gray-400 dark:text-white;
   }
 
   #safari {
@@ -253,7 +261,61 @@ body {
       }
     }
   }
-  
+
+  #terminalmob {
+    @apply bg-transparent;
+
+    .terminal-container {
+      @apply min-h-screen w-full bg-white dark:bg-[#1e1e1e] text-black dark:text-white flex flex-col font-sans;
+    }
+
+    .ios-app-header {
+      @apply flex items-center justify-between px-4 pt-10 pb-4 relative z-10 border-b border-gray-200 dark:border-white/5 bg-gray-100 dark:bg-[#252526];
+    }
+
+    .header-title {
+      @apply font-semibold text-sm text-center w-full text-gray-700 dark:text-gray-300 absolute left-0 pointer-events-none;
+    }
+
+    .techstack {
+      @apply text-sm font-roboto p-5 flex-1 overflow-y-auto;
+
+      .label {
+        @apply flex items-center ms-10 mt-7;
+      }
+
+      .content {
+        @apply py-5 my-5 border-y border-dashed border-gray-300 dark:border-gray-700 space-y-2;
+
+        li {
+          .check {
+            @apply text-[#00A154] dark:text-[#04b961] w-5;
+          }
+
+          h3 {
+            @apply font-semibold text-[#00A154] dark:text-[#04b961] w-32 ms-2;
+          }
+
+          ul {
+            @apply flex items-center gap-2 flex-wrap;
+          }
+        }
+      }
+
+      .footnote {
+        @apply text-[#00A154] dark:text-[#04b961] space-y-1 mt-4;
+
+        p {
+          @apply flex items-center;
+
+          svg {
+            @apply w-5 me-2;
+          }
+        }
+      }
+    }
+  }
+
 
   #vscode {
     @apply w-3xl h-[70%] absolute top-20 left-1/4 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl;
@@ -315,69 +377,137 @@ body {
     }
   }
 
-#weather {
-  @apply w-[320px] absolute top-20 right-130 bg-white/80 dark:bg-[#1e1e1e]/80 backdrop-blur-2xl shadow-2xl drop-shadow-2xl rounded-2xl overflow-hidden flex flex-col border border-gray-200/50 dark:border-white/10 transition-all duration-30;
+  #weather {
+    @apply w-[320px] absolute top-20 right-130 bg-white/80 dark:bg-[#1e1e1e]/80 backdrop-blur-2xl shadow-2xl drop-shadow-2xl rounded-2xl overflow-hidden flex flex-col border border-gray-200/50 dark:border-white/10 transition-all duration-30;
 
-  .macos-window-header {
-    @apply flex items-center px-4 py-3 relative z-10 border-b border-gray-200/50 dark:border-white/5;
-  }
-
-  .header-title {
-    @apply font-semibold text-sm text-center w-full text-gray-700 dark:text-gray-300 absolute left-0 pointer-events-none;
-  }
-
-  .weather-content {
-    @apply p-5 flex flex-col items-center w-full min-h-[420px] text-gray-900 dark:text-white transition-all duration-300;
-
-    .search-bar {
-      @apply flex items-center bg-gray-500/10 dark:bg-black/30 rounded-xl px-3 py-2 w-full mb-6 border border-black/5 dark:border-white/5 shadow-inner transition-all duration-300;
-
-      .search-icon {
-        @apply text-gray-500 dark:text-gray-400 mr-2;
-      }
-
-      .search-input {
-        @apply bg-transparent w-full outline-none text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 text-sm;
-      }
+    .macos-window-header {
+      @apply flex items-center px-4 py-3 relative z-10 border-b border-gray-200/50 dark:border-white/5;
     }
 
-    .loading-state {
-      @apply text-gray-500 dark:text-gray-400 mt-10 animate-pulse text-sm;
+    .header-title {
+      @apply font-semibold text-sm text-center w-full text-gray-700 dark:text-gray-300 absolute left-0 pointer-events-none;
     }
 
-    .error-text {
-      @apply text-red-600 dark:text-red-300 text-sm bg-red-100 dark:bg-red-900/40 px-3 py-2 rounded-lg border border-red-200 dark:border-red-500/30 mb-4;
-    }
+    .weather-content {
+      @apply p-5 flex flex-col items-center w-full min-h-[420px] text-gray-900 dark:text-white transition-all duration-300;
 
-    .current-weather {
-      @apply flex flex-col items-center w-full;
+      .search-bar {
+        @apply flex items-center bg-gray-500/10 dark:bg-black/30 rounded-xl px-3 py-2 w-full mb-6 border border-black/5 dark:border-white/5 shadow-inner transition-all duration-300;
 
-      .city-name {
-        @apply text-3xl font-medium tracking-wide mb-0;
+        .search-icon {
+          @apply text-gray-500 dark:text-gray-400 mr-2;
+        }
+
+        .search-input {
+          @apply bg-transparent w-full outline-none text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 text-sm;
+        }
       }
 
-      .temperature {
-        @apply text-[5.5rem] font-extralight my-[-10px] ml-4 leading-none tracking-tighter;
+      .loading-state {
+        @apply text-gray-500 dark:text-gray-400 mt-10 animate-pulse text-sm;
       }
 
-      .condition {
-        @apply text-lg font-medium capitalize text-gray-600 dark:text-gray-300 mt-1;
+      .error-text {
+        @apply text-red-600 dark:text-red-300 text-sm bg-red-100 dark:bg-red-900/40 px-3 py-2 rounded-lg border border-red-200 dark:border-red-500/30 mb-4;
       }
 
-      .high-low {
-        @apply flex gap-3 text-sm font-medium mt-1 text-gray-500 dark:text-gray-400;
-      }
+      .current-weather {
+        @apply flex flex-col items-center w-full;
 
-      .glass-panel {
-        @apply mt-8 bg-black/5 dark:bg-white/5 rounded-2xl w-full flex justify-center items-center border border-black/5 dark:border-white/5 shadow-sm p-2 transition-all duration-300;
-        
-        .weather-icon {
-          @apply w-32 h-32 object-contain drop-shadow-lg;
+        .city-name {
+          @apply text-3xl font-medium tracking-wide mb-0;
+        }
+
+        .temperature {
+          @apply text-[5.5rem] font-extralight my-[-10px] ml-4 leading-none tracking-tighter;
+        }
+
+        .condition {
+          @apply text-lg font-medium capitalize text-gray-600 dark:text-gray-300 mt-1;
+        }
+
+        .high-low {
+          @apply flex gap-3 text-sm font-medium mt-1 text-gray-500 dark:text-gray-400;
+        }
+
+        .glass-panel {
+          @apply mt-8 bg-black/5 dark:bg-white/5 rounded-2xl w-full flex justify-center items-center border border-black/5 dark:border-white/5 shadow-sm p-2 transition-all duration-300;
+
+          .weather-icon {
+            @apply w-32 h-32 object-contain drop-shadow-lg;
+          }
         }
       }
     }
   }
-}
+
+  #weathermob {
+    @apply bg-transparent;
+
+    .weather-container {
+      @apply min-h-screen w-full bg-gradient-to-b from-[#3a6ea5] to-[#76a5d4] dark:from-[#0B1528] dark:to-[#1E3757] text-white flex flex-col font-sans transition-colors duration-500;
+    }
+
+    .ios-app-header {
+      @apply flex items-center px-4 pt-10 pb-4 relative z-10;
+    }
+
+    .search-container {
+      @apply px-5 mb-8 mt-2;
+    }
+
+    .search-box {
+      @apply flex items-center bg-white/20 dark:bg-black/20 backdrop-blur-md rounded-xl px-3 py-2.5 w-full border border-white/20 shadow-sm transition-all;
+    }
+
+    .search-icon {
+      @apply text-white/80 mr-2;
+    }
+
+    .search-input {
+      @apply bg-transparent w-full outline-none text-white placeholder:text-white/70 text-base;
+    }
+
+    .weather-content {
+      @apply flex-1 flex flex-col items-center px-5;
+    }
+
+    .loading-state {
+      @apply text-white/80 mt-16 animate-pulse text-xl font-medium;
+    }
+
+    .error-state {
+      @apply bg-red-500/20 backdrop-blur-md border border-red-500/50 text-white px-4 py-3 rounded-xl mb-6;
+    }
+
+    .current-weather {
+      @apply flex flex-col items-center w-full mt-2 drop-shadow-md;
+    }
+
+    .city-name {
+      @apply text-[34px] font-normal tracking-wide mb-0 leading-tight;
+    }
+
+    .temperature {
+      @apply text-[7.5rem] font-extralight leading-none tracking-tighter ml-6 my-1;
+    }
+
+    .condition {
+      @apply text-[22px] font-medium capitalize text-white mb-1;
+    }
+
+    .high-low {
+      @apply flex gap-4 text-[20px] font-medium mt-1 text-white;
+    }
+
+    .glass-panel {
+      @apply mt-16 bg-white/10 dark:bg-black/10 backdrop-blur-xl border border-white/10 rounded-[40px] p-6 shadow-2xl;
+
+      .weather-icon {
+        @apply w-32 h-32 object-contain drop-shadow-2xl scale-125;
+      }
+    }
+  }
 
   #photos {
     @apply max-w-3xl absolute top-96 left-1/2 -translate-y-1/2 bg-white dark:bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
@@ -511,7 +641,7 @@ body {
     }
 
     .preview {
-      @apply p-2 bg-gray-200  max-h-[70vh];
+      @apply p-2 bg-gray-200 max-h-[70vh];
 
       img {
         @apply w-full h-fit object-contain object-center;

@@ -99,14 +99,14 @@ const Control = () => {
 
   return (
     <div ref={controlRef}
-      className="w-80 bg-white/70 dark:bg-gray-800/80 backdrop-blur-xl rounded-xl overflow-hidden shadow-2xl border border-gray-200 dark:border-white/10"
+      className="w-80 bg-white/70 dark:bg-[#242424] backdrop-blur-xl rounded-xl overflow-hidden shadow-2xl border border-gray-200 dark:border-white/10"
     >
       <div className="p-4">
         {/* Toggle Buttons Grid */}
         <div className="grid grid-cols-4 gap-3 mb-4">
           <button
             className={`flex flex-col items-center justify-center p-3 rounded-xl transition-colors ${
-              wifiEnabled ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white"
+              wifiEnabled ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-[#37373d] hover:bg-gray-300 dark:hover:bg-[#47474f] text-gray-800 dark:text-white"
             }`}
             onClick={toggleWifi}
           >
@@ -116,7 +116,7 @@ const Control = () => {
 
           <button
             className={`flex flex-col items-center justify-center p-3 rounded-xl transition-colors ${
-              bluetoothEnabled ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white"
+              bluetoothEnabled ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-[#37373d] hover:bg-gray-300 dark:hover:bg-[#47474f] text-gray-800 dark:text-white"
             }`}
             onClick={() => setBluetoothEnabled(!bluetoothEnabled)}
           >
@@ -136,7 +136,7 @@ const Control = () => {
 
           <button
             className={`flex flex-col items-center justify-center p-3 rounded-xl transition-colors ${
-              isFullscreen ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white"
+              isFullscreen ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-[#37373d] hover:bg-gray-300 dark:hover:bg-[#47474f] text-gray-800 dark:text-white"
             }`}
             onClick={toggleFullscreen}
           >
@@ -146,7 +146,7 @@ const Control = () => {
         </div>
 
         {/* Brightness Slider */}
-        <div className="bg-gray-100 dark:bg-gray-700 rounded-xl p-3 mb-3">
+        <div className="bg-gray-100 dark:bg-[#37373d] rounded-xl p-3 mb-3">
           <div className="flex items-center justify-between mb-2">
             <span className="text-gray-800 dark:text-white text-xs font-medium">Display</span>
             <span className="text-gray-500 dark:text-white/70 text-xs">{brightness}%</span>
@@ -162,7 +162,7 @@ const Control = () => {
         </div>
 
         {/* Volume Slider */}
-        <div className="bg-gray-100 dark:bg-gray-700 rounded-xl p-3">
+        <div className="bg-gray-100 dark:bg-[#37373d] rounded-xl p-3">
           <div className="flex items-center justify-between mb-2">
             <span className="text-gray-800 dark:text-white text-xs font-medium">Volume</span>
             <span className="text-gray-500 dark:text-white/70 text-xs">{volume}%</span>

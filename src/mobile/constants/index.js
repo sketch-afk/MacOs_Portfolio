@@ -44,12 +44,12 @@ const dockApps = [
     icon: "finder.png",
     canOpen: true,
   },
-  {
-    id: "safari",
-    name: "Articles", // was "Safari"
-    icon: "safari.png",
-    canOpen: true,
-  },
+  // {
+  //   id: "safari",
+  //   name: "Articles", // was "Safari"
+  //   icon: "safari.png",
+  //   canOpen: true,
+  // },
   {
     id: "contact",
     name: "Contact", // or "Get in touch"
@@ -57,17 +57,17 @@ const dockApps = [
     canOpen: true,
   },
   {
-    id: "terminal",
+    id: "terminalmob",
     name: "Skills", // was "Terminal"
     icon: "terminal.png",
     canOpen: true,
   },
-  // {
-  //   id: "weather",
-  //   name: "Weather", // was "Weather"
-  //   icon: "weather.png",
-  //   canOpen: true,
-  // },
+  {
+    id: "weathermob",
+    name: "Weather", // was "Weather"
+    icon: "weather.png",
+    canOpen: true,
+  },
 ];
 
 const blogPosts = [
@@ -528,7 +528,7 @@ const WINDOW_CONFIG = {
     zIndex: INITIAL_Z_INDEX,
     data: null,
   },
-  terminal: {
+  terminalmob: {
     isOpen: false,
     isMinimized: false,
     isMaximized: false,
@@ -563,7 +563,7 @@ const WINDOW_CONFIG = {
     zIndex: INITIAL_Z_INDEX,
     data: null,
   },
-  weather: {
+  weathermob: {
     isOpen: false,
     isMinimized: false,
     isMaximized: false,
@@ -577,7 +577,7 @@ export { INITIAL_Z_INDEX, WINDOW_CONFIG };
 const launchpadApps = [
   { id: "safari", title: "Safari", icon: "/images/safari.png", canOpen: true, component: "Safari" },
   {
-    id: "terminal",
+    id: "terminalmob",
     title: "Terminal",
     icon: "/images/terminal.png",
     canOpen: true,
@@ -587,7 +587,7 @@ const launchpadApps = [
   { id: "contact", title: "Contact", icon: "/images/contact.png", canOpen: true, component: "Contact" },
   { id: "photos", title: "Photos", icon: "/images/photos.png", canOpen: true, component: "Photos" },
   // { id: "vscode", title: "VS Code", icon: "/images/vscode.png", canOpen: true, component: "Vscode" },
-  { id: "weather", title: "Weather", icon: "/images/weather.png", canOpen: true, component: "Weather" },
+  { id: "weathermob", title: "Weather", icon: "/images/weather.png", canOpen: true, component: "Weather" },
 ];
 
 export { launchpadApps };

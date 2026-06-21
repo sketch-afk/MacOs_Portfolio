@@ -78,7 +78,7 @@ const DockMob = () => {
           <div key={id} className="relative flex  justify-center">
             <button
               type="button"
-              className={`dock-icon ${id === "weather" ? "weather-dock-icon" : ""}`}
+              className={`dock-icon ${id === "weathermob" ? "weather-dock-icon" : ""}`}
               aria-label={name}
               data-tooltip-id="dock-tooltip"
               data-tooltip-content={name}

@@ -86,17 +86,19 @@ const Launchpad = () => {
           {filteredApps.map((app) => (
             <div
               key={app.id}
-              className="flex flex-col items-center justify-center cursor-pointer group"
+              className="flex flex-col items-center justify-start cursor-pointer group active:opacity-70 transition-opacity"
               onClick={() => handleAppClick(app)}
             >
-              <div className="w-16 h-16 flex items-center justify-center mb-2 rounded-xl group-hover:bg-white/20 transition-colors">
+              <div className="w-16 h-16 flex items-center justify-center mb-2 shadow-sm rounded-2xl overflow-hidden active:scale-95 transition-all bg-white/10 dark:bg-white/5 group-hover:bg-white/20">
                 <img
                   src={app.icon || "https://via.placeholder.com/150"}
                   alt={app.title}
-                  className="w-12 h-12 object-contain"
+                  className="w-14 h-14 object-contain drop-shadow-lg"
                 />
               </div>
-              <span className="text-white text-sm text-center">{app.title}</span>
+              <span className="text-white text-sm font-medium text-center line-clamp-1 px-1 drop-shadow-sm">
+                {app.title}
+              </span>
             </div>
           ))}
         </div>

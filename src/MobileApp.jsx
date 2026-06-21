@@ -1,5 +1,5 @@
 import React from "react";
-import { Terminalmob, ControlMob, LaunchpadMob } from "@apps";
+import { Terminalmob, ControlMob, LaunchpadMob, WeatherMob } from "@apps";
 import { DockMob, NavbarMob, WelcomeMob } from "@components";
 
 
@@ -12,6 +12,7 @@ const MobileApp = () => {
       <Terminalmob />
       <ControlMob />
       <LaunchpadMob />
+      <WeatherMob />
     </>
   );
 };

@@ -2,14 +2,14 @@ import React from "react";
 import MobileWrapper from "@hoc/MobileWrapper.jsx";
 import { techStack } from "@constants";
 import { Check, Flag } from "lucide-react";
-import {WindowControlsMob} from "@components";
+import { WindowControlsMob } from "@components";
 
 const Terminalmob = () => {
   return (
-    <>
-      <div className="app-header">
-        <WindowControlsMob target="terminal" />
-        <h2>Tech Stack</h2>
+    <div className="terminal-container">
+      <div className="ios-app-header">
+        <WindowControlsMob target="terminalmob" />
+        <h2 className="header-title">Tech Stack</h2>
       </div>
       <div className="techstack">
         <p>
@@ -22,10 +22,10 @@ const Terminalmob = () => {
         </div>
         <ul className="content">
           {techStack.map(({ category, items }) => (
-            <li key={category} className="flex items-center">
-              <Check className="check" size={20} />
-              <h3>{category}</h3>
-              <ul>
+            <li key={category} className="flex items-start mb-2">
+              <Check className="check shrink-0" size={20} />
+              <h3 className="w-32 ms-2 shrink-0">{category}</h3>
+              <ul className="flex flex-wrap gap-2">
                 {items.map((item, i) => (
                   <li key={i}>
                     {item}
@@ -40,16 +40,16 @@ const Terminalmob = () => {
           <p>
             <Check size={20} /> 5 of 5 stacks loaded successfully (100%)
           </p>
-          <p className="text-black dark:text-white">
-            <Flag size={15} className="fill-black dark:fill-white" />
+          <p className="text-black dark:text-white mt-1">
+            <Flag size={15} className="fill-black dark:fill-white mr-2" />
             Render time: 6ms
           </p>
-        </div>{" "}
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
-const TerminalWindowMob = MobileWrapper(Terminalmob, "terminal");
+const TerminalAppMob = MobileWrapper(Terminalmob, "terminalmob");
 
-export default TerminalWindowMob;
+export default TerminalAppMob;

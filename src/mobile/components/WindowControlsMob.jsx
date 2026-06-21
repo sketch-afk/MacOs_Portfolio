@@ -9,14 +9,14 @@ const WindowControlsMob = ({
   const closeApp = closeAppProp ?? windowStore.closeApp;
 
   return (
-    <div id="app-controls">
+    <div id="app-controls ">
       <button
         type="button"
-        className="cursor-pointer flex items-center"
+        className="cursor-pointer flex items-center justify-center whitespace-nowrap"
         onClick={() => closeApp()}
         aria-label="Go back"
       >
-        <ChevronLeft className="icon" /> Go Back
+        <ChevronLeft className="iconmob cursor-pointer mt-0.5" /> Go Back
       </button>
     </div>
   );
