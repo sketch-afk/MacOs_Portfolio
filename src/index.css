@@ -274,7 +274,7 @@ body {
     }
 
     .header-title {
-      @apply font-semibold text-sm text-center w-full text-gray-700 dark:text-gray-300 absolute left-0 pointer-events-none;
+      @apply font-semibold text-lg text-center w-full text-gray-700 dark:text-gray-300 absolute left-0 pointer-events-none;
     }
 
     .techstack {
